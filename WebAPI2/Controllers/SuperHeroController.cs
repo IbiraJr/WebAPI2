@@ -18,14 +18,14 @@ namespace WebAPI2.Controllers
         [HttpGet]
         public async Task<ActionResult<List<SuperHero>>> GetAllHeroes()
         {
-            var result = _superHeroService.GetAllHeroes();
+            var result = await _superHeroService.GetAllHeroes();
             return Ok(result);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<SuperHero>> GetSingleHero(int id)
         {
-            var result = _superHeroService.GetSingleHero(id);
+            var result = await _superHeroService.GetSingleHero(id);
             return Ok(result);
         }
 
@@ -33,7 +33,7 @@ namespace WebAPI2.Controllers
         public async Task<ActionResult<List<SuperHero>>> AddHero(SuperHero request)
         {
 
-            var result = _superHeroService.AddHero(request);
+            var result = await _superHeroService.AddHero(request);
 
             return Ok(result);
         }
@@ -41,7 +41,7 @@ namespace WebAPI2.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<List<SuperHero>>> UpdateHero(int id, SuperHero request)
         {
-            var result = _superHeroService.UpdateHero(id, request);
+            var result = await _superHeroService.UpdateHero(id, request);
 
             return Ok(result);
         }
@@ -49,7 +49,7 @@ namespace WebAPI2.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<List<SuperHero>>> DeleteHero(int id)
         {
-            var result = _superHeroService.DeleteHero(id);
+            var result = await _superHeroService.DeleteHero(id);
             
             if (result is null)
                 return NotFound("Sorry.");

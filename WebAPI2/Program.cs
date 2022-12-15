@@ -1,5 +1,7 @@
 ﻿global using WebAPI2.Models;
-using WebAPI2.Services.SuperHeroService;
+global using Microsoft.EntityFrameworkCore;
+global using WebAPI2.Services.SuperHeroService;
+using WebAPI2.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ISuperHeroService, SuperHeroService>();
-
+builder.Services.AddDbContext<DataContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
